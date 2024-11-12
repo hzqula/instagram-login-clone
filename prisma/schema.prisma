@@ -18,5 +18,4 @@ model Korban {
   id       String @id @default(uuid())
   username String
   password String
-  ucapan   String
 }

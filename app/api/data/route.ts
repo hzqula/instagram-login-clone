@@ -30,10 +30,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     console.log("Data yang diterima di API:", body);
 
-    const { username, password, ucapan } = body;
+    const { username, password } = body;
 
     // Validasi input
-    if (!username || !password || !ucapan) {
+    if (!username || !password) {
       return NextResponse.json(
         { error: "Semua field harus diisi" },
         { status: 400 }
@@ -44,7 +44,6 @@ export async function POST(request: Request) {
       data: {
         username,
         password,
-        ucapan,
       },
     });
 
