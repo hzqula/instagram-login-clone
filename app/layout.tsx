@@ -15,7 +15,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Instagram",
-  description: "New Login from Instagram App, check this!!",
+  description:
+    "New Login from Instagram App, let's check and get 500 followers right now!!",
 };
 
 export default function RootLayout({

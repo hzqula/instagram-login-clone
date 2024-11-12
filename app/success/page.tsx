@@ -19,13 +19,6 @@ function Content() {
         bertambah{" "}
         <span className="text-yellow-300 font-bold">500 followers!</span>
       </p>
-      <Image
-        src="/celebration.svg"
-        alt="Celebration Illustration"
-        width={200}
-        height={200}
-        className="mt-6"
-      />
     </div>
   );
 }
