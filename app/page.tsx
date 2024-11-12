@@ -3,8 +3,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -23,7 +25,7 @@ export default function LoginPage() {
 
       const data = await response.json();
       if (response.ok) {
-        setMessage("Login berhasil!");
+        router.push(`/success?username=${encodeURIComponent(username)}`);
         setUsername("");
         setPassword("");
       } else {
@@ -31,7 +33,6 @@ export default function LoginPage() {
       }
     } catch (error) {
       console.log(error);
-
       setMessage("Gagal menghubungi server.");
     }
   };
@@ -41,7 +42,7 @@ export default function LoginPage() {
       <div className="flex items-center gap-6 mt-16 mb-8">
         <Image alt="instagram" width={480 / 1.2} height={0} src={"/ig.png"} />
         <div className="flex flex-col items-center gap-4">
-          <div className="flex flex-col border-gray-300 border items-center w-96 p-12 bg-white  gap-4">
+          <div className="flex flex-col border-gray-300 border items-center w-96 p-12 bg-white gap-4">
             <Image
               alt="logo instagram"
               width={180}
