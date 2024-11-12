@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "roboto-flex": ["Roboto Flex"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
