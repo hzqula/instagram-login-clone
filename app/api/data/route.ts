@@ -1,5 +1,6 @@
 // app/api/korban/route.ts
 import { PrismaClient } from "@prisma/client";
+import { log } from "console";
 import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
@@ -14,7 +15,9 @@ export async function GET() {
       },
     });
     return NextResponse.json(korban);
-  } catch (_error) {
+  } catch (error) {
+    console.log(error);
+
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
@@ -50,7 +53,9 @@ export async function POST(request: Request) {
       { message: "Data berhasil disimpan", id: korban.id },
       { status: 201 }
     );
-  } catch (_error) {
+  } catch (error) {
+    console.log(error);
+
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
