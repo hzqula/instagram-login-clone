@@ -1,28 +1,44 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
-export default function SuccessPage() {
+function Content() {
   const searchParams = useSearchParams();
   const username = searchParams.get("username");
 
   return (
+    <div className="flex flex-col items-center bg-white/20 backdrop-blur-md rounded-lg p-10 shadow-2xl max-w-md">
+      <h1 className="text-4xl font-extrabold text-yellow-300 animate-pulse mb-4 text-center">
+        🎉 Selamat! 🎉
+      </h1>
+      <p className="text-center text-lg leading-relaxed">
+        Aku Instagram dengan username{" "}
+        <span className="font-bold text-pink-300">@{username}</span> telah
+        bertambah{" "}
+        <span className="text-yellow-300 font-bold">500 followers!</span>
+      </p>
+      <Image
+        src="/celebration.svg"
+        alt="Celebration Illustration"
+        width={200}
+        height={200}
+        className="mt-6"
+      />
+    </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 text-white font-roboto-flex overflow-hidden">
       {/* Confetti Effect */}
 
-      {/* Main Container */}
-      <div className="flex flex-col items-center bg-white/20 backdrop-blur-md rounded-lg p-10 shadow-2xl max-w-md">
-        <h1 className="text-4xl font-extrabold text-green-300 animate-pulse mb-4 text-center">
-          🎉 Selamat! 🎉
-        </h1>
-        <p className="text-center text-lg leading-relaxed">
-          Akun Instagram dengan username{" "}
-          <span className="font-bold text-pink-300">@{username}</span> telah
-          bertambah{" "}
-          <span className="text-green-300 font-bold">500 followers!</span>
-        </p>
-      </div>
+      {/* Suspense Boundary for Content */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Content />
+      </Suspense>
 
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
