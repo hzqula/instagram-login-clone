@@ -14,7 +14,7 @@ export async function GET() {
       },
     });
     return NextResponse.json(korban);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       { message: "Data berhasil disimpan", id: korban.id },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
