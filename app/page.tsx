@@ -40,7 +40,13 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 font-roboto-flex">
       <div className="flex items-center gap-6 mt-16 mb-8">
-        <Image alt="instagram" width={480 / 1.2} height={0} src={"/ig.png"} />
+        <Image
+          alt="instagram"
+          width={480 / 1.2}
+          height={0}
+          src={"/ig.png"}
+          className="hidden lg:block"
+        />
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col border-gray-300 border items-center w-96 p-12 bg-white gap-4">
             <Image
