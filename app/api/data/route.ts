@@ -1,22 +1,13 @@
 // app/api/korban/route.ts
-import { PrismaClient } from "@prisma/client";
+import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
-const prisma = new PrismaClient();
-
-// GET handler untuk mengambil semua data korban
 export async function GET() {
   try {
-    const korban = await prisma.korban.findMany({
-      select: {
-        username: true,
-        password: true,
-      },
-    });
-    return NextResponse.json(korban);
+    const korban = await sql`SELECT username, password FROM korban;`;
+    return NextResponse.json(korban.rows);
   } catch (error) {
     console.log(error);
-
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
@@ -24,12 +15,9 @@ export async function GET() {
   }
 }
 
-// POST handler untuk membuat data korban baru
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log("Data yang diterima di API:", body);
-
     const { username, password, ucapan } = body;
 
     // Validasi input
@@ -40,21 +28,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const korban = await prisma.korban.create({
-      data: {
-        username,
-        password,
-        ucapan,
-      },
-    });
+    await sql`INSERT INTO korban (username, password, ucapan) VALUES (${username}, ${password}, ${ucapan});`;
 
     return NextResponse.json(
-      { message: "Data berhasil disimpan", id: korban.id },
+      { message: "Data berhasil disimpan" },
       { status: 201 }
     );
   } catch (error) {
     console.log(error);
-
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
