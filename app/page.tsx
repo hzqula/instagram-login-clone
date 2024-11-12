@@ -115,7 +115,7 @@ export default function LoginPage() {
           <div className="flex flex-col border-gray-300 border items-center w-96 px-12 py-6 bg-white rounded-lg gap-4">
             <div className="text-sm text-center">
               <p className="font-roboto-flex">
-                Don't have an account?
+                {`Don't have an account? `}
                 <a
                   href="https://www.instagram.com/accounts/emailsignup/"
                   className="text-blue-500 font-semibold"
