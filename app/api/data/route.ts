@@ -1,6 +1,5 @@
 // app/api/korban/route.ts
 import { PrismaClient } from "@prisma/client";
-import { log } from "console";
 import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();

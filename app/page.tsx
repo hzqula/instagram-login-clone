@@ -30,6 +30,8 @@ export default function LoginPage() {
         setMessage(data.error || "Terjadi kesalahan.");
       }
     } catch (error) {
+      console.log(error);
+
       setMessage("Gagal menghubungi server.");
     }
   };
