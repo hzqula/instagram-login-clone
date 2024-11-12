@@ -14,7 +14,7 @@ function Content() {
         🎉 Selamat! 🎉
       </h1>
       <p className="text-center text-lg leading-relaxed">
-        Aku Instagram dengan username{" "}
+        Akun Instagram dengan username{" "}
         <span className="font-bold text-pink-300">@{username}</span> telah
         bertambah{" "}
         <span className="text-yellow-300 font-bold">500 followers!</span>
